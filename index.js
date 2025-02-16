@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(morgan('dev'));
 app.use(cors());
 app.use(cookieParser());
-// app.use(rateLimit({ windowMs: 60 * 1000, max: 5 })); 
+app.use(rateLimit({ windowMs: 60 * 1000, max: 5 })); 
 
 app.use('/api/user',userRoutes);
 app.use('/api/shorten',shortenRoutes);
