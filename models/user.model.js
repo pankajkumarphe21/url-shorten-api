@@ -5,15 +5,9 @@ const UserSchema = new mongoose.Schema({
   name:{ type: String },
   totalUrls:{type:Number,default:0},
   totalClicks:{type:Number,default:0},
-  uniqueUsers:[
-    {type:String}
-  ],
-  clicksByDate:[{
-    type:Object
-  }],
-  
+  clicksByDate:[{  date:  String, noOfClicks:Number }],
 });
 
-const user=mongoose.model("User", UserSchema);
+const user=mongoose.model("user", UserSchema);
 
 export default user;

@@ -8,10 +8,12 @@ const UrlSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   clicks: [{ ip: String, os: String, device: String, date: { type: Date, default: Date.now } }],
   uniqueUsers:[{
-    type:String,
-  }]
+    type:mongoose.Schema.Types.ObjectId,ref:'user'
+  }],
+  userId:{type:mongoose.Schema.Types.ObjectId,
+    ref:'user'}
 });
 
-const url=mongoose.model("Url", UrlSchema);
+const url=mongoose.model("url", UrlSchema);
 
 export default url;

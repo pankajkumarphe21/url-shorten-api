@@ -13,14 +13,14 @@ export const loginUser = async (req, res) => {
         if(!user){
             user=await userModel.create({email,name});
         }
-        const token = jwt.sign({ uid, email }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ uid:user._id, email }, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
         res.cookie("token",token);
         res.json({
             message: "User authenticated successfully",
             token,
-            user: { uid, email, name }
+            user: { uid:user._id, email, name }
         });
     } catch (error) {
         // console.error(error);

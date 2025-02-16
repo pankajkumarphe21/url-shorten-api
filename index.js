@@ -8,6 +8,7 @@ import connect from "./db/db.js";
 import userRoutes from './routes/user.routes.js'
 import shortenRoutes from './routes/shorten.routes.js'
 import analyticsRoutes from './routes/analytics.routes.js'
+import redisClient from "./services/redis.service.js";
 
 dotenv.config();
 
