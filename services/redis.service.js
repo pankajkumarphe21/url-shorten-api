@@ -7,7 +7,7 @@ const redisClient=new Redis({
 })
 
 redisClient.on('connect',()=>{
-    console.log('redis connected')
+    // console.log('redis connected')
 })
 
 export default redisClient;
