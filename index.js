@@ -27,4 +27,4 @@ app.use('/api/user',userRoutes);
 app.use('/api/shorten',shortenRoutes);
 app.use('/api/analytics',analyticsRoutes);
 
-app.listen(8800);
+app.listen(process.env.PORT || 8800);
