@@ -2,6 +2,7 @@ import urlModel from "../models/url.model.js";
 import userModel from "../models/user.model.js";
 import redisClient from "../services/redis.service.js";
 import {UAParser} from 'ua-parser-js';
+import axios from "axios";
 
 export const getShortUrl = async (req, res) => {
   let { longUrl, customAlias, topic } = req.body;
@@ -22,8 +23,8 @@ export const getShortUrl = async (req, res) => {
   if(!customAlias){
     customAlias = newUrl._id.toString();
   }
-  newUrl.shortCode = `${process.env.BASE_URL}/shorten/${newUrl.customAlias}`;
   newUrl.customAlias = customAlias;
+  newUrl.shortCode = `${process.env.BASE_URL}/shorten/${newUrl.customAlias}`;
   await redisClient.set(customAlias, longUrl);
   await newUrl.save();
   await user.save();
